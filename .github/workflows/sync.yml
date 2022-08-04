@@ -1,0 +1,27 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Sync
+
+on:
+  push
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  sync:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: Git Sync Action
+        uses: wei/git-sync@v3.0.0
+        with:
+          source_repo: "ocdtrekkie/git-sync-test"
+          source_branch: "refs/remotes/source/*"
+          destination_repo: "https://tqkxoeud:O4F0BbUd7_jdPMsVUpb1meJ-vy58f3F6S8Ji9dtNJ5Q@api-c663aef110f67780fd6201049c7e4775.ocdhost.sandcats.io/"
+          destination_branch: "refs/heads/*"
